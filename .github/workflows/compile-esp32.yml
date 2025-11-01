@@ -44,7 +44,7 @@ jobs:
     
     - name: Compile Sketch
       run: |
-        arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build code/
+        .arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
