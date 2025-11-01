@@ -47,6 +47,25 @@ jobs:
         arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build code/gifi_blood.ino
     
     - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: gifi-blood-firmware
+        path: |
+          build/*.bin
+          build/*.elf
+        retention-days: 30      run: arduino-cli core install esp32:esp32@2.0.14
+    
+    - name: Install Libraries
+      run: |
+        arduino-cli lib install ArduinoJson
+    
+    - name: Compile Sketch
+      run: |
+        mkdir -p code
+        mv gifi_blood.ino code/ 2>/dev/null || true
+        arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build code/gifi_blood.ino
+    
+    - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: gifi-blood-firmware
