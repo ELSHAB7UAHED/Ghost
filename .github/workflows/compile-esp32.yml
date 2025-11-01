@@ -1,6 +1,8 @@
 name: Compile ESP32 Binary
 
 on:
+  push:
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -42,9 +44,7 @@ jobs:
     
     - name: Compile Sketch
       run: |
-        mkdir -p code
-        mv gifi_blood.ino code/ 2>/dev/null || true
-        arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build code/gifi_blood.ino
+        arduino-cli compile --fqbn esp32:esp32:esp32 --output-dir build code/
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
