@@ -126,8 +126,7 @@ void setupBloodWiFi() {
   
   // الطاقة القصوى المطلقة
   esp_wifi_set_max_tx_power(MAX_POWER);
-  esp_wifi_config_espnow_rate(WIFI_IF_STA, WIFI_PHY_RATE_MCS7_SGI);
-  
+    
   // إعدادات متقدمة للطاقة
   esp_wifi_set_bandwidth(WIFI_IF_STA, WIFI_BW_HT40);
   esp_wifi_set_protocol(WIFI_IF_STA, WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N);
